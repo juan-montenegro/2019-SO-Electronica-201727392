@@ -2,8 +2,8 @@
 
 Los archivos trabajados el día de hoy fueron:
 
-* `[entero.h](entero.h)`
-* `[principal.c](principal.c)`
+* [entero.h](entero.h)
+* [principal.c](principal.c)
 
 La forma como se compila y se ejcuta es como sigue:
 
