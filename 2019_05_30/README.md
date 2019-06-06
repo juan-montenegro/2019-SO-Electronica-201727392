@@ -7,4 +7,6 @@ Los archivos trabajados el día de hoy fueron:
 
 La forma como se compila y se ejcuta es como sigue:
 
-```gcc principal.c -o principal && ./principal```
+```
+gcc principal.c -o principal && ./principal
+```
