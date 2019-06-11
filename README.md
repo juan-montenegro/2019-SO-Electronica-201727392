@@ -3,4 +3,14 @@
 
 ## Clase 2019_05_23
 
-En la clase de hoy se creo un archivo en C llamado [basico.c](basico.c)
+* [2019_05_03](/2019_05_23/README.md)
+
+## Clase 2019_05_30
+
+* [2019_05_30](/2019_05_30/README.md)
+
+## Clase 2019_05_23
+
+* [2019_06_06](/2019_06_06/README.md)
+
+
