@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
     *p = atoi(argv[1]); // assign value to addr stored in p
     while (1) {
 	Spin(1);
+	printf("Proceso (%d) en dirección de memoria[%d] tiene el valor %d\n",getpid(),p,*p);
 	*p = *p + 1;
 	printf("(%d) value of p: %d\n", getpid(), *p);
     }
