@@ -16,10 +16,14 @@ int clr(void){
 	clear();
 }
 
+int commands(){
+
+}
 int initScreen(void){
 	clr();
 	printf("Bienvenido a su terminal\n");
 	printf("Presione ENTER para continuar\n");
+  while (c = getchar() !='\n');
 	sleep(1);
 	clr();
 }
