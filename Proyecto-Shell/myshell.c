@@ -4,32 +4,40 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+#define MAXCHAR 1000 // Numero maximo de caracteres soportados
+#define MAXCMND 100 // Numero maximo de comando sopartos
+
+#define clear() printf("\033[H\033[J")
+
+int clr(void){
+	clear();
+}
+
+int initScreen(void){
+	clr();
+	printf("Bienvenido a su terminal\n");
+	printf("Presione ENTER para continuar\n");
+	sleep(1);
+	clr();
+}
+
+/// Funcion para recibir entrada del usuario
+int userInput(char* str){
+    char* uInput;
+
+    uInput = readline("\n-> ");
+    if (strlen(uInput) != 0) {
+        add_history(uInput);
+        strcpy(str, uInput);
+        return 0;
+    } else {
+        return 1;
+    }
+}
 
 int main(int argc, char** argv) {
-  char comando[256];
-  pid_t pid;
-  while (1) {
-    printf("> ");
-    gets(comando);
-    if (strncmp(comando,"exit",4) == 0) {
-      break;
-    }
-    pid = fork();
-    if (pid != 0) {
-      wait(NULL);
-    } else {
-      if (strcmp(comando,"dir") == 0) {
-        // listar el contenido de archivos en ese directorio
-        printf("debo listar archivos\n");
-      } else if (strcmp(comando, "clear") == 0) {
-        // limpiar pantalla
-        printf("debo limpiar pantalla\n");
-      } else {
-        //strtok
-        //revisar alguna variante de exec
-        //exec(comando);
-      }
-    }
-  }
-  exit(0);
+	initScreen();
 }
