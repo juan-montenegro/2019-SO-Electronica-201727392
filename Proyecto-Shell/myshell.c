@@ -21,6 +21,7 @@ int commands(){
 }
 int initScreen(void){
 	clr();
+  int c;
 	printf("Bienvenido a su terminal\n");
 	printf("Presione ENTER para continuar\n");
   while (c = getchar() !='\n');
