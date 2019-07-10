@@ -17,30 +17,31 @@ int clr(void){
 }
 
 int commands(){
-
+	
 }
+
 int initScreen(void){
 	clr();
-  int c;
+	int c;
 	printf("Bienvenido a su terminal\n");
 	printf("Presione ENTER para continuar\n");
-  while (c = getchar() !='\n');
-	sleep(1);
-	clr();
+  	while (c = getchar() !='\n'){
+	
+	}
 }
 
 /// Funcion para recibir entrada del usuario
 int userInput(char* str){
-    char* uInput;
-
-    uInput = readline("\n-> ");
-    if (strlen(uInput) != 0) {
-        add_history(uInput);
-        strcpy(str, uInput);
-        return 0;
-    } else {
-        return 1;
-    }
+	char* uInput;
+	uInput = readline("\n-> ");
+	if (strlen(uInput) != 0) {
+		add_history(uInput);
+		strcpy(str, uInput);
+		return 0;
+	}
+	else {
+        	return 1;
+	}
 }
 
 int main(int argc, char** argv) {
