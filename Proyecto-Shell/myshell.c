@@ -26,8 +26,12 @@ int initScreen(void){
 	printf("Bienvenido a su terminal\n");
 	printf("Presione ENTER para continuar\n");
   	while (c = getchar() !='\n'){
-	
+		clr();
+		printf("Bienvenido a su terminal\n");
+		printf("Presione ENTER para continuar\n");
 	}
+	clr();
+	sleep(1);
 }
 
 /// Funcion para recibir entrada del usuario
