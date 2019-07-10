@@ -12,26 +12,27 @@
 
 #define clear() printf("\033[H\033[J")
 
-int clr(void){
-	clear();
-}
-
 int commands(){
 	
 }
 
 int initScreen(void){
-	clr();
+	clear();
 	int c;
 	printf("Bienvenido a su terminal\n");
 	printf("Presione ENTER para continuar\n");
   	while (c = getchar() !='\n'){
-		clr();
+		clear();
 		printf("Bienvenido a su terminal\n");
 		printf("Presione ENTER para continuar\n");
 	}
-	clr();
+	clear();
 	sleep(1);
+}
+
+int currentDir(char){
+	char cwd[256];
+	
 }
 
 /// Funcion para recibir entrada del usuario
@@ -44,7 +45,7 @@ int userInput(char* str){
 		return 0;
 	}
 	else {
-        	return 1;
+		return 1;
 	}
 }
 
