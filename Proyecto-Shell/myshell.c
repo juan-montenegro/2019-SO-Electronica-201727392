@@ -6,20 +6,23 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define MAXCHAR 1000 // Numero maximo de caracteres soportados
-#define MAXCMND 100 // Numero maximo de comando sopartos
+#define MAXCMND 100
 
 #define clear() printf("\033[H\033[J")
 
 int initScreen(void){
 	clear();
 	int c;
+	printf("***************************\n")
 	printf("Bienvenido a su terminal\n");
 	printf("Presione ENTER para continuar\n");
+	printf("***************************\n")
   	while (c = getchar() !='\n'){
 		clear();
+		printf("***************************\n")
 		printf("Bienvenido a su terminal\n");
 		printf("Presione ENTER para continuar\n");
+		printf("***************************\n")
 	}
 	clear();
 	sleep(1);
@@ -28,18 +31,10 @@ int initScreen(void){
 int newLine(void) { 
     char cwd[256]; 
     getcwd(cwd, sizeof(cwd)); 
-	clear();
-    printf("\nShell= %s", cwd); 
+    printf("\nShell= %s >>>", cwd); 
 }
 
-int newLine(void) { 
-    char cwd[256]; 
-    getcwd(cwd, sizeof(cwd)); 
-	clear();
-    printf("\nShell= %s", cwd); 
-}
-
-int currentDir (char** cDir){
+int currentDir(char** cDir){
 	DIR *dp;
 	struct dirent *ep;
 	
@@ -52,6 +47,29 @@ int currentDir (char** cDir){
 	else
     	printf("Directorio no válido");
   		return 0;
+}
+
+int getEnvStr(envp){
+	int i; 
+    for (i = 0; envp[i] != NULL; i++) 
+        printf("\n%s", envp[i]); 
+    getchar(); 
+    return 0; 
+}
+
+int readLine(void){
+	char *line = NULL;
+  	ssize_t bufferSize = 0; // have getline allocate a buffer for us
+  	getline(&line, &bufferSize, stdin);
+  	return line;
+}
+
+int splitLine(char *line){
+
+}
+
+int executeComnd(){
+
 }
 
 int commandAdmin(char** parsed){
@@ -68,18 +86,22 @@ int commandAdmin(char** parsed){
 	commandList[6] = "pause";
 	commandList[7] = "quit";
 
+	// Compara el comando itroducido con la lista de
+	// comandos permitidos y retorna la posición
 	for (i = 0; i < commandNumber; i++){
 		if (strcmp(parsed[0]) = commandList[i] == 0){
 			argSearch = i + 1;
 			break;
 		}	
 	}
+
 	switch (argSearch){
 		case 1:
 			chdir(parsed[1]);
 			return 1;
 		case 2:
-			newLine();
+			clear();
+			programLoop(envp);
 			return 1;
 		case 3:
 			currentDir(parsed[1]);
@@ -102,9 +124,24 @@ int commandAdmin(char** parsed){
 	return 0;
 }
 
-int main(int argc, char** argv) {
-	initScreen();
-	while (1){
-		break;
+int programLoop(){
+	char *line;
+	char **args;
+	int status;
+	do {
+		newLine();
+		line = readLine();
+		args = splitLine(line);
+		status = executeComnd(args);
+
+		free(line);
+		free(args);
 	}
+	while (satus);
+}
+
+int main(int argc, char *argv[], char * envp[]) {
+	initScreen();
+	programLoop(envp);	
+	return 0;
 }
